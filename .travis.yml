@@ -1,0 +1,20 @@
+
+sudo: required
+language: python 
+services:
+  - docker
+addons:
+  apt:
+    packages:
+      - docker-ce
+python:
+  - "3.6"
+os:
+  - linux
+
+install: 
+  - pip install -r requirements.txt  
+script: 
+  -  /bin/bash push.sh
+#  -  /bin/bash ingress-nginx/ingress-nginx-images.sh
+#  - sudo rm -f /home/travis/.docker/config.json
