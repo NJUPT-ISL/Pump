@@ -1,7 +1,7 @@
 # tf-image-pusher
 TensorFlow Docker 镜像自动化构建工具
 
-构建状态：  ![Status](https://www.travis-ci.org/njupt-iot-sig/tf-image-pusher#)
+构建状态：  ![Status](https://www.travis-ci.org/njupt-iot-sig/tf-image-pusher.svg?branch=master)
 
 ## 镜像列表
 
@@ -11,7 +11,6 @@ TensorFlow Docker 镜像自动化构建工具
 | latest     | 3      | CPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/tf-cpu-py3:latest |
 | 1.11.0     | 3      | GPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/tf-gpu-py3:latest |
 | 1.11.0     | 3      | CPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/tf-cpu-py3:latest |
-
 
 
 ## 运行容器
