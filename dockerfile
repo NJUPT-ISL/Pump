@@ -33,10 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && echo 'root:GeekCloud' |chpasswd \
         && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
         && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
-        && mkdir /root/.ssh \
-        && apt-get clean && \
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+        && mkdir /root/.ssh 
 
 RUN [ ${ARCH} = ppc64le ] || (apt-get update && \
         apt-get install nvinfer-runtime-trt-repo-ubuntu1604-5.0.2-ga-cuda${CUDA} \
@@ -80,8 +77,6 @@ RUN ${PIP} install ${TF_PACKAGE}${TF_PACKAGE_VERSION:+==${TF_PACKAGE_VERSION}}
 
 COPY bashrc /etc/bash.bashrc
 RUN chmod a+rwx /etc/bash.bashrc
-
-    
 
 EXPOSE 22
 
