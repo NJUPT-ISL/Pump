@@ -8,6 +8,8 @@ FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
 ARG ARCH
 ARG CUDA
 ARG CUDNN=7.4.1.5-1
+# Needed for string substitution 	
+SHELL ["/bin/bash", "-c"]
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
