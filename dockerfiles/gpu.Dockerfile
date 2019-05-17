@@ -9,7 +9,6 @@ FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
 ARG ARCH
 ARG CUDA
 ARG CUDNN=7.4.1.5-1
-
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -19,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-curand-${CUDA/./-} \
         cuda-cusolver-${CUDA/./-} \
         cuda-cusparse-${CUDA/./-} \
+        libnvinfer5=5.0.2-1+cuda${CUDA} \
         curl \
         libcudnn7=${CUDNN}+cuda${CUDA} \
         libfreetype6-dev \
@@ -32,12 +32,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && echo 'root:GeekCloud' |chpasswd \
         && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
         && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
-        && mkdir /root/.ssh 
-
-RUN [ ${ARCH} = ppc64le ] || (apt-get update && \
-        apt-get install nvinfer-runtime-trt-repo-ubuntu1604-5.0.2-ga-cuda${CUDA} \
+        && mkdir /root/.ssh \
+        && [ ${ARCH} = ppc64le ] || (apt-get update \
+        && apt-get install nvinfer-runtime-trt-repo-ubuntu1604-5.0.2-ga-cuda${CUDA} \
         && apt-get update \
-        && apt-get install -y --no-install-recommends libnvinfer5=5.0.2-1+cuda${CUDA} \
+        && apt-get install -y \
+        ${PYTHON} \
+        ${PYTHON}-pip \
+        && ${PIP} --no-cache-dir install --upgrade \
+        pip \
+        setuptools \
+        && ln -s $(which ${PYTHON}) /usr/local/bin/python \
+        && ${PIP} install torch torchvision \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*)
 
@@ -51,15 +57,6 @@ ARG PIP=pip${_PY_SUFFIX}
 
 # See http://bugs.python.org/issue19846
 ENV LANG C.UTF-8
-
-RUN apt-get update && apt-get install -y \
-    ${PYTHON} \
-    ${PYTHON}-pip \
-    && ${PIP} --no-cache-dir install --upgrade \
-    pip \
-    setuptools \
-    && ln -s $(which ${PYTHON}) /usr/local/bin/python 
-
 
 RUN ${PIP} install torch torchvision
 
