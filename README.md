@@ -1,9 +1,9 @@
 # tf-image-pusher
-TensorFlow Docker 镜像自动化构建工具
+TensorFlow/Pytorch Docker 镜像自动化构建工具
 
 构建状态：  ![Status](https://www.travis-ci.org/NJUPT-ISL/tf-image-pusher.svg?branch=master)
 
-## 镜像列表
+## TensorFlow 镜像列表
 
 | Tensorflow | Python | GPU/CPU | 镜像名称                                                     |
 | ---------- | ------ | ------- | ------------------------------------------------------------ |
@@ -12,8 +12,13 @@ TensorFlow Docker 镜像自动化构建工具
 | 1.11.0     | 3      | GPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/tf-gpu-py3:latest |
 | 1.11.0     | 3      | CPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/tf-cpu-py3:latest |
 
+## Pytorch 镜像列表
 
-## 运行容器
+| Tensorflow | Python | GPU/CPU | 镜像名称                                                     |
+| ---------- | ------ | ------- | ------------------------------------------------------------ |
+| latest     | 3      | GPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/pytorch-py3-gpu:latest |
+
+## 运行容器（用例）
 
 运行 Python 环境：
 
