@@ -1,4 +1,4 @@
-# tf-image-pusher
+# Image-pusher
 TensorFlow/Pytorch Docker 镜像自动化构建工具
 
 构建状态：  ![Status](https://www.travis-ci.org/NJUPT-ISL/tf-image-pusher.svg?branch=master)
