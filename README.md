@@ -14,7 +14,7 @@ TensorFlow/Pytorch Docker 镜像自动化构建工具
 
 ## Pytorch 镜像列表
 
-| Tensorflow | Python | GPU/CPU | 镜像名称                                                     |
+| Pytorch | Python | GPU/CPU | 镜像名称                                                     |
 | ---------- | ------ | ------- | ------------------------------------------------------------ |
 | latest     | 3      | GPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/pytorch-py3-gpu:latest |
 
