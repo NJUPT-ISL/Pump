@@ -58,20 +58,9 @@ RUN apt-get update && apt-get install -y \
     && ${PIP} --no-cache-dir install --upgrade \
     pip \
     setuptools \
-    && ln -s $(which ${PYTHON}) /usr/local/bin/python 
-
-# Options:
-#   tensorflow
-#   tensorflow-gpu
-#   tf-nightly
-#   tf-nightly-gpu
-# Set --build-arg TF_PACKAGE_VERSION=1.11.0rc0 to install a specific version.
-# Installs the latest version by default.
-
-RUN ${PIP} install  torch torchvision
-
-COPY bashrc /etc/bash.bashrc
-RUN chmod a+rwx /etc/bash.bashrc
+    && ln -s $(which ${PYTHON}) /usr/local/bin/python \
+    && ${PIP} install  torch torchvision \
+    && chmod a+rwx /etc/bash.bashrc
 
 EXPOSE 22
 
