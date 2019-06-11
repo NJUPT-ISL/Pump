@@ -7,8 +7,6 @@ addons:
   apt:
     packages:
       - docker-ce
-python:
-  - "3.6"
 os:
   - linux
 script: 
