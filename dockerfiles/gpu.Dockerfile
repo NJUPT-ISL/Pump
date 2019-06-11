@@ -8,7 +8,8 @@ FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
 ARG ARCH
 ARG CUDA
 ARG CUDNN=7.4.1.5-1
-# Needed for string substitution 	
+
+# Needed for string substitution 
 SHELL ["/bin/bash", "-c"]
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -36,6 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN [ ${ARCH} = ppc64le ] || (apt-get update && \
         apt-get install nvinfer-runtime-trt-repo-ubuntu1604-5.0.2-ga-cuda${CUDA} \
+        && apt-get update \
         && apt-get install -y --no-install-recommends libnvinfer5=5.0.2-1+cuda${CUDA} \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*)
@@ -53,14 +55,22 @@ ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install -y \
     ${PYTHON} \
-    ${PYTHON}-pip \
-    && ${PIP} --no-cache-dir install --upgrade \
+    ${PYTHON}-pip
+
+RUN ${PIP} --no-cache-dir install --upgrade \
     pip \
-    setuptools \
-    && ln -s $(which ${PYTHON}) /usr/local/bin/python \
-    && ${PIP} install  torch torchvision \
-    && chmod a+rwx /etc/bash.bashrc
+    setuptools
 
+# Some TF tools expect a "python" binary
+RUN ln -s $(which ${PYTHON}) /usr/local/bin/python 
+
+# Options:
+#   tensorflow
+#   tensorflow-gpu
+#   tf-nightly
+#   tf-nightly-gpu
+# Set --build-arg TF_PACKAGE_VERSION=1.11.0rc0 to install a specific version.
+# Installs the latest version by default.
+RUN ${PIP} install torch torchvision
 EXPOSE 22
-
 CMD    ["/usr/sbin/sshd", "-D"]
