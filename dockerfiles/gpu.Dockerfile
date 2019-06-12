@@ -45,8 +45,7 @@ RUN [ ${ARCH} = ppc64le ] || (apt-get update && \
 # For CUDA profiling, TensorFlow requires CUPTI.
 ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
-ARG USE_PYTHON_3_NOT_2
-ARG _PY_SUFFIX=${USE_PYTHON_3_NOT_2:+3}
+ARG _PY_SUFFIX=3
 ARG PYTHON=python${_PY_SUFFIX}
 ARG PIP=pip${_PY_SUFFIX}
 
@@ -64,13 +63,6 @@ RUN ${PIP} --no-cache-dir install --upgrade \
 # Some TF tools expect a "python" binary
 RUN ln -s $(which ${PYTHON}) /usr/local/bin/python 
 
-# Options:
-#   tensorflow
-#   tensorflow-gpu
-#   tf-nightly
-#   tf-nightly-gpu
-# Set --build-arg TF_PACKAGE_VERSION=1.11.0rc0 to install a specific version.
-# Installs the latest version by default.
 RUN ${PIP} install torch torchvision
 EXPOSE 22
 CMD    ["/usr/sbin/sshd", "-D"]
