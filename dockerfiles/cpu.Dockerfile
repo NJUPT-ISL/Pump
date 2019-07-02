@@ -26,7 +26,6 @@ RUN ${PIP} --no-cache-dir install --upgrade \
 
 # Some TF tools expect a "python" binary
 RUN ln -s $(which ${PYTHON}) /usr/local/bin/python 
-
 # Options:
 #   tensorflow
 #   tensorflow-gpu
