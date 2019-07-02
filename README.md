@@ -1,8 +1,6 @@
 # Pump
 TensorFlow/Pytorch Docker 镜像自动化构建工具
 
-
-
 ## TensorFlow 镜像列表
 
 | Tensorflow | Python | 构建状态                                                     | GPU/CPU | 镜像名称                                                     |
@@ -36,4 +34,3 @@ $ docker run -it \
   --rm --runtime=nvidia \
   <镜像名称>
 ```
-
