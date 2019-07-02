@@ -1,7 +1,7 @@
-# Image-pusher
+# Pump
 TensorFlow/Pytorch Docker 镜像自动化构建工具
 
-构建状态：  ![Status](https://www.travis-ci.org/NJUPT-ISL/image-pusher.svg?branch=master)
+构建状态：  ![Status](https://www.travis-ci.org/NJUPT-ISL/Pump.svg?branch=master)
 
 ## TensorFlow 镜像列表
 
@@ -23,14 +23,14 @@ TensorFlow/Pytorch Docker 镜像自动化构建工具
 运行 Python 环境：
 
 ```shell
-$ docker run -it --rm --runtime=nvidia tensorflow/tensorflow:latest-gpu-py3 python
+$ docker run -it --rm --runtime=nvidia <镜像名称> python
 ```
 
 使用SSH后台运行：
 
 ```shell
 $ docker run -it \
-  --name tf-pycharm-env\ 
+  --name tf-pycharm-env \
   --rm --runtime=nvidia \
-  tensorflow/tensorflow:latest-gpu-py3
+  <镜像名称>
 ```
