@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # This step uses the hello-world-action stored in this workflow's repository.
-    - uses: actions/checkout@master
+    - uses: .
     # This step prints the time.
     - run: /bin/bash push.sh
