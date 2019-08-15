@@ -18,8 +18,6 @@ TensorFlow/Pytorch Docker 镜像自动化构建工具
 | ---------- | ------ | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | latest     | 3.5.2  | ![Status](https://www.travis-ci.org/NJUPT-ISL/Pump.svg?branch=pytorch-gpu) | GPU     | registry.cn-hangzhou.aliyuncs.com/geekcloud/pytorch-py3-gpu:latest |
 
-
-
 ## 运行容器（用例）
 
 运行 Python 环境：

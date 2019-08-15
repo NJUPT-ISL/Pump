@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-server \
         software-properties-common \
         unzip \
+        screen \
         && mkdir /var/run/sshd \
         && echo 'root:GeekCloud' |chpasswd \
         && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
