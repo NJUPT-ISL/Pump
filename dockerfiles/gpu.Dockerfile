@@ -63,6 +63,6 @@ RUN ${PIP} --no-cache-dir install --upgrade \
 # Some TF tools expect a "python" binary
 RUN ln -s $(which ${PYTHON}) /usr/local/bin/python 
 
-RUN ${PIP} install torch torchvision
+RUN ${PIP} install torch==0.4.0 torchvision
 EXPOSE 22
 CMD    ["/usr/sbin/sshd", "-D"]
