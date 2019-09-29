@@ -1,6 +1,9 @@
 # Pump
 TensorFlow/Pytorch Docker 镜像自动化构建工具
 
+## 工作原理
+使用 Travis CI 将本仓库中的 Dockerfile 构建并推送至阿里云容器镜像仓库。
+
 ## TensorFlow GPU版本镜像列表
 
 | Tensorflow | Python | 构建状态                                                     | 镜像名称                                                     |
