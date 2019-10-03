@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v1
       env: 
         username: ${{ secrets.username }}
-        password: ${{ secrets.password}}
+        password: ${{ secrets.password }}
     - run: /bin/bash push.sh
     
