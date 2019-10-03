@@ -28,7 +28,6 @@ jobs:
           stable"
         sudo apt-get update
         sudo apt-get install docker-ce docker-ce-cli containerd.io
-
     - name: Build 
       uses: actions/checkout@v1
       env: 
