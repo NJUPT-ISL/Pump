@@ -1,21 +1,17 @@
 name: Github CI
-# This workflow is triggered on pushes to the repository.
 on: [push]
 
 jobs:
   build:
-    # Job name is Build
     name: Build Docker Image
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-    - name: Check System & Docker 
-      uses: actions/checkout@v1
-      run: /bin/bash check.sh
-    - name: Build 
+    - name: Check System, Docker & Build Dockerfile
       uses: actions/checkout@v1
       env: 
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
-      run: /bin/bash push.sh
+      run: |
+        /bin/bash check.sh
+        /bin/bash push.sh
     
