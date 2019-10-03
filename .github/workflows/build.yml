@@ -1,18 +1,14 @@
 name: Github CI
-on: [push]
+on: push
 
 jobs:
   build:
-    name: Build Docker Image
+    name: Build DockerImage
     runs-on: ubuntu-latest
     steps:
-    - name: Check System & Docker 
-      uses: actions/checkout@v1
-      run: /bin/bash check.sh
-    - name: Check System, Docker & Build Dockerfile
-      uses: actions/checkout@v1
-      env: 
-        username: ${{ secrets.username }}
-        password: ${{ secrets.password }}
-      run: /bin/bash push.sh
-    
+    - name: Check Docker 
+      run: |
+        /bin/bash check.sh
+    - name: Build Dockerfile
+      run: |
+        /bin/bash push.sh
