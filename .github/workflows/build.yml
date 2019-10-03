@@ -27,5 +27,8 @@ jobs:
         sudo apt-get install docker-ce docker-ce-cli containerd.io -y
         docker version
     - name: Build Dockerfile
+      env:
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
       run: |
         /bin/bash push.sh
