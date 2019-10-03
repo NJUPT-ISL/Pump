@@ -11,7 +11,7 @@ jobs:
       env: 
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
-      run: |
+      run: 
         /bin/bash check.sh
         /bin/bash push.sh
     
