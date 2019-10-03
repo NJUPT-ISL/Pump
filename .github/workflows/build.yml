@@ -6,12 +6,12 @@ jobs:
     name: Build Docker Image
     runs-on: ubuntu-latest
     steps:
-    - name: Check System, Docker & Build Dockerfile
+    - name: Check System & Docker 
       uses: actions/checkout@v1
+      run: /bin/bash check.sh
+    - name: Check System, Docker & Build Dockerfile
       env: 
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
-      run: 
-        /bin/bash check.sh
-        /bin/bash push.sh
+      run: /bin/bash push.sh
     
