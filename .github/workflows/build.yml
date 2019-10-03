@@ -9,8 +9,7 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-    # This step uses the hello-world-action stored in this workflow's repository.
-    - uses: .
+    - uses: actions/checkout@v1
     # This step prints the time.
     - run: /bin/bash push.sh
     
