@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     && pip3 --no-cache-dir install --upgrade \
     pip \
-    setuptools \
-    && ln -s $(which python3) /usr/local/bin/python \
+    setuptools 
+RUN ln -s $(which python3) /usr/local/bin/python \
     && mkdir /var/run/sshd \
     && echo 'root:GeekCloud' |chpasswd \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
