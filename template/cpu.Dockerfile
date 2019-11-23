@@ -1,5 +1,4 @@
 ARG UBUNTU_VERSION=18.04
-ARG PACKAGES
 FROM ubuntu:${UBUNTU_VERSION} as base
 ENV LANG C.UTF-8
 RUN apt-get update && apt-get install -y \
@@ -16,4 +15,5 @@ RUN ln -s $(which python3) /usr/local/bin/python \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
     && mkdir /root/.ssh 
-RUN pip3 install $PACKAGES
+ARG PACKAGES
+RUN pip3 install ${PACKAGES}

@@ -1,5 +1,4 @@
 ARG UBUNTU_VERSION=18.04
-ARG PACKAGES
 ARG CUDA=10.0
 FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
 ARG CUDNN=7.6.2.24-1
@@ -40,6 +39,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && pip3 --no-cache-dir install --upgrade \
     pip \
-    setuptools
-RUN ln -s $(which python3) /usr/local/bin/python 
+    setuptools \
+    && ln -s $(which python3) /usr/local/bin/python 
+ARG PACKAGES
 RUN pip3 install ${PACKAGES}
