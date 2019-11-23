@@ -1,5 +1,5 @@
 ARG UBUNTU_VERSION=18.04
-ARG PACKAGES=
+ARG PACKAGES
 FROM ubuntu:${UBUNTU_VERSION} as base
 ENV LANG C.UTF-8
 RUN apt-get update && apt-get install -y \

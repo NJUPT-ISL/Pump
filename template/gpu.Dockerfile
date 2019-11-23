@@ -1,10 +1,7 @@
 ARG UBUNTU_VERSION=18.04
-ARG PACKAGE=
-ARG ARCH=
+ARG PACKAGES
 ARG CUDA=10.0
 FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
-ARG ARCH
-ARG CUDA
 ARG CUDNN=7.6.2.24-1
 SHELL ["/bin/bash", "-c"]
 # Pick up some TF dependencies
