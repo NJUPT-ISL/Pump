@@ -16,4 +16,4 @@ RUN ln -s $(which python3) /usr/local/bin/python \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
     && mkdir /root/.ssh 
-RUN pip3 install ${PACKAGES}
+RUN pip3 install $PACKAGES
