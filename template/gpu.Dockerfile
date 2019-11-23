@@ -40,6 +40,7 @@ RUN apt-get update && apt-get install -y \
     && pip3 --no-cache-dir install --upgrade \
     pip \
     setuptools \
-    && ln -s $(which python3) /usr/local/bin/python 
+    && ln -s $(which python3) /usr/local/bin/python \
+    && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ARG PACKAGES
 RUN pip3 install ${PACKAGES}
