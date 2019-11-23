@@ -15,6 +15,6 @@ RUN ln -s $(which python3) /usr/local/bin/python \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
     && mkdir /root/.ssh \
-    && && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+    && && pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ARG PACKAGES
 RUN pip3 install ${PACKAGES}
