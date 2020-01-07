@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
         software-properties-common \
         unzip \
+        openssh-server \
         screen \
         && mkdir /var/run/sshd \
         && echo 'root:GeekCloud' |chpasswd \
