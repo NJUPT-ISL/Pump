@@ -8,7 +8,7 @@ ARG PIP=pip${_PY_SUFFIX}
 
 # See http://bugs.python.org/issue19846
 ENV LANG C.UTF-8
-
+COPY test.py /root
 RUN apt-get update && apt-get install -y \
     ${PYTHON} \
     ${PYTHON}-pip \
