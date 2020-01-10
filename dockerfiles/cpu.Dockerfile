@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     ${PYTHON} \
     ${PYTHON}-pip \
     openssh-server \
+    curl \
     && mkdir /var/run/sshd \
     && echo 'root:GeekCloud' |chpasswd \
     && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
